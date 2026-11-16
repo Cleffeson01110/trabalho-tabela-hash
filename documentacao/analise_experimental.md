@@ -150,8 +150,50 @@ Também foi possível observar o funcionamento do redimensionamento dinâmico. A
 Com isso, a tabela terminou os experimentos com 200, 1.600 e 25.600 posições, respectivamente.
 O fator de carga final permaneceu abaixo do limite estabelecido nos três cenários, demonstrando que o mecanismo de crescimento da tabela funcionou conforme o planejado.
 
+
+
 6. Conclusão
 A análise experimental permitiu observar o comportamento da tabela hash em diferentes quantidades de registros.
 Os testes demonstraram que a implementação conseguiu realizar inserções e buscas com tempos reduzidos, além de administrar as colisões por meio da sondagem linear.
 O redimensionamento dinâmico também funcionou corretamente, aumentando a capacidade da tabela conforme a quantidade de produtos crescia e realizando o rehashing dos registros existentes.
 Dessa forma, os resultados indicam que a implementação atende ao objetivo de controlar os produtos por meio de uma tabela hash com hashing universal, sondagem linear e alocação dinâmica de memória.
+
+
+
+
+7. Parâmetros da função hash
+A função hash utilizada foi baseada no método de hashing universal, com a seguinte expressão:
+
+h(k) = ((a × k + b) mod p) mod m
+
+Os parâmetros utilizados foram:
+
+- p = 1.000.003, um número primo escolhido para a função;
+- a = valor aleatório entre 1 e p - 1;
+- b = valor aleatório entre 0 e p - 1;
+- m = capacidade atual da tabela hash.
+
+Os valores de a e b são definidos aleatoriamente no início da execução do programa. Durante uma mesma execução, esses parâmetros permanecem iguais nas cinco repetições de cada cenário experimental. Entretanto, eles podem mudar quando o programa é iniciado novamente.
+
+Os valores exatos de a e b utilizados na execução que gerou os resultados apresentados não foram registrados. Por esse motivo, os resultados documentados correspondem à configuração utilizada naquela execução, mas não permitem reproduzir exatamente a mesma sequência de índices em uma nova execução.
+
+
+
+
+8. Considerações sobre os resultados
+
+Os experimentos demonstraram que a tabela conseguiu trabalhar com diferentes quantidades de produtos, desde 100 até 10.000 registros, mantendo o funcionamento das operações de inserção e busca.
+O aumento da capacidade ocorreu automaticamente conforme o fator de carga ultrapassava o limite de 0,75. Isso explica por que a capacidade final foi maior que a quantidade de produtos cadastrados em todos os cenários.
+Também foi possível observar que o número de colisões e de sondagens aumentou conforme a quantidade de registros cresceu. Isso acontece porque mais elementos precisam ser distribuídos pela tabela, aumentando a possibilidade de duas chaves utilizarem a mesma posição inicial.
+As buscas malsucedidas também exigiram sondagens, pois o programa precisou percorrer posições da tabela até encontrar uma posição vazia ou concluir que o produto não estava cadastrado.
+Os tempos registrados foram bastante baixos nos três cenários. Entretanto, eles representam os resultados obtidos no ambiente de execução utilizado e não devem ser considerados valores fixos para qualquer computador.
+
+
+
+
+
+9. Conclusão da análise experimental
+
+A análise experimental permitiu verificar o comportamento da tabela hash em diferentes volumes de dados. A implementação conseguiu realizar as inserções e buscas, contabilizar colisões e sondagens e aumentar sua capacidade automaticamente quando necessário.
+Os resultados também demonstraram a importância do fator de carga na organização da tabela. A política de redimensionamento manteve esse fator abaixo do limite definido, permitindo que a estrutura continuasse operando sem atingir uma ocupação excessiva.
+Dessa forma, os experimentos ajudaram a avaliar não apenas o tempo de execução, mas também o comportamento interno da tabela hash, considerando colisões, sondagens, capacidade e fator de carga.
