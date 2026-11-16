@@ -1,0 +1,143 @@
+TESTES DE CORREÇÃO
+
+1. INTRODUÇÃO
+Depois de finalizar a implementação da tabela hash, foram realizados alguns testes para verificar se as funções do programa estavam funcionando corretamente.
+Os testes foram feitos manualmente, utilizando o menu do programa. Foram verificadas as operações de cadastro, busca, atualização e remoção de produtos, além 
+do funcionamento das colisões e do aumento da capacidade da tabela.
+
+
+
+2. TESTES REALIZADOS
+TESTE 1 — Inserção e busca de produto existente
+
+Objetivo: verificar se um produto cadastrado pode ser encontrado posteriormente.
+
+Como foi feito: foi cadastrado um produto com seus dados, incluindo código, nome, quantidade e preço. Depois, foi realizada uma busca utilizando o código informado 
+no cadastro.
+
+Resultado esperado: o produto deveria ser encontrado e seus dados deveriam aparecer corretamente.
+
+Resultado obtido: o produto foi encontrado normalmente, apresentando os dados cadastrados.
+
+Situação: Aprovado.
+
+
+
+TESTE 2 — Busca de produto inexistente
+Objetivo: verificar o comportamento do programa ao procurar um produto que não está cadastrado.
+
+Como foi feito: foi realizada uma busca utilizando um código que não estava presente na tabela.
+
+Resultado esperado: o programa deveria informar que o produto não foi encontrado, sem apresentar dados incorretos.
+
+Resultado obtido: o programa informou corretamente que não havia nenhum produto cadastrado com aquele código.
+
+Situação: Aprovado.
+
+
+
+TESTE 3 — Tentativa de inserir produto duplicado
+
+Objetivo: verificar se o programa impede o cadastro de dois produtos com o mesmo código.
+
+Como foi feito: foi cadastrado um produto e, em seguida, foi feita uma nova tentativa de cadastro utilizando o mesmo código.
+
+Resultado esperado: o programa deveria impedir a duplicação do código, evitando que dois produtos diferentes ocupassem a mesma identificação.
+
+Resultado obtido: o programa identificou que o código já estava cadastrado e não permitiu a duplicação.
+
+Situação: Aprovado.
+
+
+
+TESTE 4 — Colisão entre duas ou mais chaves
+
+Objetivo: verificar se a tabela consegue armazenar produtos diferentes que acabam recebendo o mesmo índice inicial pela função hash.
+
+Como foi feito: primeiro, foi utilizado um trecho temporário de código para encontrar dois códigos que gerassem o mesmo índice inicial na função hash. 
+Foram encontrados os códigos 2 e 3, que geraram o índice inicial 22. Em seguida, os dois produtos foram cadastrados pelo menu e foram realizadas buscas 
+utilizando seus respectivos códigos.
+
+Resultado esperado: mesmo que os dois produtos tenham o mesmo índice inicial, ambos deveriam ser armazenados e encontrados corretamente por meio da 
+sondagem linear.
+
+Resultado obtido: os dois produtos foram cadastrados normalmente e puderam ser encontrados através de suas respectivas buscas. A colisão foi resolvida 
+corretamente pela sondagem linear.
+
+Situação: Aprovado.
+
+
+
+TESTE 5 — Remoção de produto em situação de colisão
+
+Objetivo: verificar se a remoção de um produto não interfere na busca de outros produtos que tiveram colisão com ele.
+
+Como foi feito: utilizando os mesmos produtos do teste anterior, foi removido o produto de código 2. Depois, foi realizada uma nova busca pelo produto de
+código 3, que havia apresentado colisão com o primeiro.
+
+Resultado esperado: o produto de código 2 não deveria mais ser encontrado, enquanto o produto de código 3 deveria continuar acessível normalmente.
+
+Resultado obtido: após a remoção do produto de código 2, o produto de código 3 continuou sendo encontrado corretamente. Isso demonstrou que a remoção não 
+prejudicou a busca de outros produtos que estavam na mesma sequência de sondagem.
+
+Situação: Aprovado.
+
+
+
+TESTE 6 — Atualização de produto
+
+Objetivo: verificar se é possível modificar os dados de um produto sem alterar seu código.
+
+Como foi feito: foi selecionado um produto já cadastrado e seus dados foram atualizados, modificando informações como nome, quantidade ou preço.
+
+Resultado esperado: os dados deveriam ser modificados, mantendo o mesmo código de identificação do produto.
+
+Resultado obtido: a atualização foi realizada corretamente e o produto continuou podendo ser encontrado pelo mesmo código.
+
+Situação: Aprovado.
+
+
+
+
+TESTE 7 — Estrutura vazia e condições-limite
+
+Objetivo: verificar o comportamento do programa em situações em que a tabela está vazia ou quando são utilizados valores próximos dos limites permitidos.
+
+Como foi feito: foram realizadas operações de busca e listagem sem produtos cadastrados. Também foi testado o cadastro utilizando o código 0, que está 
+dentro do intervalo permitido pelo programa.
+
+Resultado esperado: o programa deveria lidar corretamente com a tabela vazia e aceitar os valores válidos, sem apresentar erros.
+
+Resultado obtido: o programa conseguiu realizar as operações sem apresentar problemas e aceitou corretamente o cadastro com código 0.
+
+Situação: Aprovado.
+
+
+
+TESTE 8 — Redimensionamento e preservação dos registros
+
+Objetivo: verificar se a tabela consegue aumentar sua capacidade sem perder os produtos que já estavam cadastrados.
+
+Como foi feito: a tabela começou com capacidade para 50 produtos. Foram realizados cadastros até ultrapassar essa quantidade, chegando a 60 produtos. 
+Depois do aumento da capacidade, foram feitas buscas para verificar se os produtos anteriores continuavam armazenados.
+
+Resultado esperado: a capacidade deveria aumentar de 50 para 100 posições, mantendo todos os produtos cadastrados e permitindo novas inserções e buscas 
+normalmente.
+
+Resultado obtido: a tabela aumentou sua capacidade para 100 posições e os produtos continuaram sendo encontrados corretamente após o redimensionamento.
+
+Situação: Aprovado.
+
+
+
+
+3. CONCLUSÃO DOS TESTES
+
+Com a realização desses testes, foi possível verificar que as principais operações da tabela hash estão funcionando corretamente. Também foi possível 
+confirmar o funcionamento da sondagem linear para resolver colisões e do redimensionamento da tabela, que preservou os produtos já cadastrados.
+
+Os testes de colisão também demonstraram que a remoção de um produto não impede que outros produtos da mesma sequência de sondagem continuem sendo 
+encontrados.
+
+Dessa forma, os testes realizados apresentaram os resultados esperados para as funcionalidades verificadas.
+
